@@ -1,0 +1,8 @@
+---
+id: app-download-count
+name: App Download Count
+summary: Display number of app downloads
+desc: Displays the number of downloads for a given app (android and/or apple)
+author: dev-manuel
+fileName: app_download_count.star
+packageName: app_download_count
