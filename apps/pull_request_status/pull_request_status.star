@@ -49,6 +49,10 @@ def get_status_icon(status):
         return OPEN_ICON
 
 def main(config):
+    hide = config.bool("hide")
+    if hide:
+        return []
+
     repo_pr_setup = read_repo_pr_label_setup(config)
 
     repo_pr_status_list = [[repo, pr, label, get_pr_status(repo, pr)] for repo, pr, label in repo_pr_setup]
@@ -143,6 +147,13 @@ def get_schema():
             #     default = HIDE_AFTER_OPTIONS[0],
             #     options = hide_after_schema_options,
             # ),
+            schema.Toggle(
+                id = "hide",
+                name = "Hide this app",
+                desc = "A toggle to hide this app",
+                icon = "eye",
+                default = False,
+            ),
             schema.Text(
                 id = "pr_0",
                 name = "Repository and Pull Request 1",
