@@ -74,12 +74,17 @@ def main(config):
     #     hide_after_hours = int(hide_after)
 
     image_height = min(int(24 / len(elements_to_display)), 15)
+
+    heading = config.str("heading","")
+    if not heading:
+        heading = "Pull Requests"
+
     return render.Root(
         render.Padding(
             render.Column(
                 [
                     render.Text(
-                        "PR-Overview",
+                        heading,
                         font = "tom-thumb",
                     ),
                     render.Box(
@@ -171,6 +176,12 @@ def get_schema():
                 name = "Repository and Pull Request 3",
                 desc = "Third Repository and Pull Request (seperate repo id, pr and label with space)",
                 icon = "git",
+            ),
+            schema.Text(
+                id = "heading",
+                name = "Alternative Heading",
+                desc = "An alternative heading for the app",
+                icon = "tag",
             ),
         ],
     )
